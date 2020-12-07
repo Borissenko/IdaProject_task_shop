@@ -1,7 +1,7 @@
 <template>
   <div class="cart-wrapper">
     <div class="product-img"
-         :style="{backgroundImage: `url(${productImg})`}"
+         :style="{backgroundImage: `url(${img})`}"
     ></div>
     <div class="product-description">
       <div>{{ productName }}</div>
@@ -46,11 +46,11 @@ export default {
       required: true
     }
   },
-  // computed: {
-  //   img() {     //for real API only
-  //     return process.env.BASE_URL + this.productImg
-  //   }
-  // },
+  computed: {
+    img() {
+      return process.env.BASE_URL + this.productImg
+    }
+  },
   methods: {
     onDeleteProductInBasket() {
       this.$emit('deleteProduct', this.productId)

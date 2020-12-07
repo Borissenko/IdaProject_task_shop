@@ -77,13 +77,12 @@ export default {
     '@nuxtjs/style-resources'
   ],
 
-  //for real API only
-  // axios: {
-  //   baseURL: 'http://front-test.idalite.com'
-  // },
-  // env: {
-  //   BASE_URL: 'http://front-test.idalite.com'
-  // },
+  axios: {
+    baseURL: 'https://frontend-test.idaproject.com'
+  },
+  env: {
+    BASE_URL: 'https://frontend-test.idaproject.com'
+  },
 
 
   /*

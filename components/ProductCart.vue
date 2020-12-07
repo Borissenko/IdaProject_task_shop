@@ -3,7 +3,7 @@
     <stars class="stars" :starsCount="starsCount"/>
 
     <div class="product-img"
-         :style="{backgroundImage: `url(${productImg})`}"
+         :style="{backgroundImage: `url(${img})`}"
     ></div>
 
     <div @click="onPutProductToBasket"
@@ -54,11 +54,11 @@ export default {
       required: true
     }
   },
-  // computed: {
-  //   img() {     //for real API only
-  //     return process.env.BASE_URL + this.productImg
-  //   }
-  // },
+  computed: {
+    img() {
+      return process.env.BASE_URL + this.productImg
+    }
+  },
   methods: {
     onPutProductToBasket() {
       this.$emit('selectedProduct', {id: this.productId, category: this.productCategory})

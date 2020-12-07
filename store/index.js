@@ -57,7 +57,7 @@ export const actions = {
   async nuxtServerInit({getters, dispatch, commit}, {$axios}) {
     let productCategory = []
     try {
-      productCategory = await $axios.$get('/API_Data/productCategory/productCategory.json')
+      productCategory = await $axios.$get('/api/product-category')
     } catch(e) {
       console.log('FETCH_PRODUCTS error = ', e)
     }
@@ -65,8 +65,10 @@ export const actions = {
     dispatch('FETCH_PRODUCTS', 1)
   },
   async FETCH_PRODUCTS({commit}, categoryId) {
-    await this.$axios.$get(`/API_Data/products/products_${categoryId}.json`)
-      .then(data => commit('SET_PRODUCTS', {category: categoryId, products: data}))
+    await this.$axios.$get(`/api/product?category=${categoryId}`)
+      .then(data => {
+        commit('SET_PRODUCTS', {category: categoryId, products: data})
+      })
       .catch(e => console.log('FETCH_PRODUCTS error = ', e))
   },
   PUT_PRODUCT_TO_BASKET({getters, commit}, product) {
